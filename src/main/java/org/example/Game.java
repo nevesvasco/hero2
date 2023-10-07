@@ -10,6 +10,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 
 public class Game {
+    boolean isRunning = true;
     Terminal terminal;
     Hero hero;
     Screen screen;
@@ -33,7 +34,7 @@ public class Game {
         screen.refresh();
     }
     public void run() throws IOException {
-        while (true) {
+        while (isRunning) {
             draw();
             KeyStroke key = screen.readInput();
             processKey(key);
@@ -41,6 +42,7 @@ public class Game {
     }
     private void processKey(KeyStroke key) throws IOException {
         if (key.getKeyType() == KeyType.EOF) {
+            isRunning = false;
             return;
         }
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') {
