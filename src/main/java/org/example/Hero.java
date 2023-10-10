@@ -14,7 +14,11 @@ import java.io.IOException;
             this.x = hx;
             this.y = hy;
         }
-        public int getX() {
+
+     public Hero(Position position) {
+     }
+
+     public int getX() {
             return x;
         }
         public int getY() {
